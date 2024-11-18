@@ -1,1 +1,52 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV-basierte Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .slider-container {
+            margin-bottom: 20px;
+        }
+        .output-container {
+            margin-top: 20px;
+        }
+        .slider {
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSV-basierte Simulation</h1>
+    <div id="input-sliders"></div>
+    <div id="output-container" class="output-container">
+        <h2>Ausgabeparameter</h2>
+        <table id="output-table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Wert</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
