@@ -3,50 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV-basierte Simulation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <title>SuMo4EnSy - Ergebnisse der Überstruktur</title>
     <style>
+        /* General styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 20px;
+            background-color: #121212; /* Dark background */
+            color: #e0e0e0; /* Light text */
         }
-        .slider-container {
+        h1, h2 {
+            color: #bb86fc; /* Highlighted purple color for headings */
+        }
+        
+        /* Container styling */
+        .slider-container, .output-container {
             margin-bottom: 20px;
+            padding: 20px;
+            background-color: #1f1f1f; /* Slightly lighter dark */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
-        .output-container {
-            margin-top: 20px;
-        }
+
+        /* Slider styling */
         .slider {
             width: 100%;
+            appearance: none;
+            height: 8px;
+            background: #3a3a3a; /* Dark slider track */
+            outline: none;
+            border-radius: 4px;
+            cursor: pointer;
         }
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #bb86fc; /* Purple slider thumb */
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #bb86fc;
+            cursor: pointer;
+        }
+
+        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
         table, th, td {
-            border: 1px solid #ccc;
+            border: 1px solid #333; /* Darker borders */
         }
-        th, td {
-            padding: 8px;
+        th {
+            background-color: #3a3a3a; /* Table header background */
+            color: #e0e0e0;
+        }
+        td {
+            padding: 10px;
             text-align: left;
+            background-color: #1f1f1f; /* Table cell background */
+        }
+
+        /* Buttons and controls */
+        button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #9a6cd9;
         }
     </style>
 </head>
 <body>
-    <h1>CSV-basasdfasdflation</h1>
-    <div id="input-sliders"></div>
-    <div id="output-container" class="output-container">
-        <h2>Ausgabeparameter</h2>
-        <table id="output-table">
-            <thead>
-                <tr>
-                    <th>Parameter</th>
-                    <th>Wert</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
+    <h1>SuMo4EnSy - Ergebnisse der Überstruktur</h1>
+    <table>
+        <tr>
+            <td valign="top">
+                <h2>Eingabeparameter</h2>
+                <div id="input-sliders" class="slider-container">
+                    <!-- Input sliders will be dynamically added here -->
+                </div>
+            </td>
+            <td>
+                <div id="output-container" class="output-container">
+                    <h2>Ausgabeparameter</h2>
+                    <table id="output-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Wertebereich</th>
+                                <th>Wert</th>
+                                <th>Minimum</th>
+                                <th>Maximum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Output table rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>            
+            </td>
+        </tr>
+    </table>
     <script src="script.js"></script>
 </body>
 </html>
