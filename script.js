@@ -87,30 +87,29 @@ function updateOutputs() {
     // Am nächsten passenden Datensatz orientieren
     let bestMatch = dataset[1];
     let smallestDifference = Infinity;
-    let min = dataset[1]; 
-    let max = dataset[1]; 
+    let min = dataset[1];
+    let max = dataset[1];
 
     // Get column names
     const columns = Object.keys(dataset[0]);
     console.log(columns)
 
-     // Compute max values
-     maxValues = columns.map(col => {
+    // Compute max values
+    maxValues = columns.map(col => {
         return {
-         column: col,
-         max: Math.max(...dataset.map(row => parseFloat(row[col] || 0)))
-       };
-   });
-   console.log(maxValues)
-     // Compute max values
-     minValues = columns.map(col => {
+            column: col,
+            max: Math.max(...dataset.map(row => parseFloat(row[col] || 0)))
+        };
+    });
+    console.log(maxValues)
+    minValues = columns.map(col => {
         return {
-         column: col,
-         min: Math.min(...dataset.map(row => parseFloat(row[col] || Infinity)))
-       };
-   });
-   console.log(minValues)
-  
+            column: col,
+            min: Math.min(...dataset.map(row => row[col] !== undefined && row[col] !== null ? parseFloat(row[col]) : Infinity))
+        };
+    });
+    console.log(minValues)
+
     dataset.forEach((row) => {
         let diff = 0;
         inputKeys.forEach((key) => {
@@ -125,10 +124,10 @@ function updateOutputs() {
     // Ausgabe darstellen
     outputTableBody.innerHTML = ""; // Tabelle leeren
 
-    let i=0;
+    let i = 0;
     outputKeys.forEach((key) => {
         const row = document.createElement("tr");
-        row.innerHTML = `<td>${key}</td><td><input type="range" id="${key}-slider2" class="slider" min=${minValues[i].min} max=${maxValues[i].max} value=${parseFloat(bestMatch[key])}></td><td>${Math.round(parseFloat(bestMatch[key])*1000)/1000}</td><td>${Math.round(parseFloat(minValues[i].min)*1000)/1000}</td><td>${Math.round(parseFloat(maxValues[i].max)*1000)/1000}</td>`;
+        row.innerHTML = `<td>${key}</td><td><input type="range" id="${key}-slider2" class="slider" min=${minValues[i].min} max=${maxValues[i].max} value=${parseFloat(bestMatch[key])}></td><td>${Math.round(parseFloat(bestMatch[key]) * 1000) / 1000}</td><td>${Math.round(parseFloat(minValues[i].min) * 1000) / 1000}</td><td>${Math.round(parseFloat(maxValues[i].max) * 1000) / 1000}</td>`;
         outputTableBody.appendChild(row);
         i++;
     });
